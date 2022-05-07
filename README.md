@@ -1,4 +1,4 @@
-# facultad_app
+# Credential App
 
 A new Flutter project.
 
