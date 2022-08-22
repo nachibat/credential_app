@@ -25,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 250),
+              SizedBox(height: 200),
               CardContainer(
                 child: Column(
                   children: [
@@ -78,8 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Checkbox(
       value: checkTerms,
       onChanged: (valor) {
-        setState(() {
-          print(checkTerms);          
+        setState(() {         
           checkTerms = valor!;
         });
       }
