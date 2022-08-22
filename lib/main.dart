@@ -30,10 +30,11 @@ class MyApp extends StatelessWidget {
       systemNavigationBarColor: Colors.transparent,
     ));
     return MaterialApp(
-      title: 'Material App',
+      title: 'Credencial FRSN',
       debugShowCheckedModeBanner: false,
       routes: getApplicationRoutes(),
-      initialRoute: 'checking',
+      // initialRoute: 'checking', -- Descomentar para compilar APK
+      initialRoute: 'login',
       scaffoldMessengerKey: NotificationService.messengerKey,
       theme: mainTheme,
     );

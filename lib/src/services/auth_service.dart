@@ -1,7 +1,8 @@
 import 'dart:io';
 import 'dart:convert';
 import 'package:facultad_app/src/models/user_model.dart';
-import 'package:http/io_client.dart';
+// import 'package:http/io_client.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:cross_local_storage/cross_local_storage.dart';
 
@@ -18,9 +19,9 @@ class AuthService extends ChangeNotifier {
 
   Future<String?> login(String legajo, String usuario, String password) async {
     // Las siguientes 3 lineas ayudan a saltar la verificacion de certificados del servidor zonaekos
-    final ioc = new HttpClient();
-    ioc.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
-    final http = new IOClient(ioc);
+    // final ioc = new HttpClient();
+    // ioc.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+    // final http = new IOClient(ioc);
 
     storage = await LocalStorage.getInstance();
     
@@ -47,7 +48,7 @@ class AuthService extends ChangeNotifier {
       if (decodedResp.containsKey('usuario')) {
         // await storage.write(key: 'data', value: jsonEncode(authData), aOptions: _getAndroidOptions());
 
-        await storage.setString('data', jsonEncode(authData));
+        // await storage.setString('data', jsonEncode(authData)); -- Descomentar para compilar APK
         user = Usuario.fromMap( decodedResp);
         return 'login_ok';
       } else {

@@ -61,18 +61,19 @@ class _ProfilePhoto extends StatelessWidget {
           child: GestureDetector(
             child: authService.getImage(75),
             onTap: () async {
-              final picker = new ImagePicker();
-              final XFile? pickedFile = await picker.pickImage(
-                source: ImageSource.camera,
-                preferredCameraDevice: CameraDevice.front,
-                imageQuality: 100
-              );
-              if (pickedFile == null) {
-                print('No selecciono nada');
-                return;
-              }
-              print('Tenemos imagen: ${pickedFile.path}');
-              authService.takePicture(pickedFile.path);
+              // final picker = new ImagePicker();
+              // final XFile? pickedFile = await picker.pickImage(
+              //   source: ImageSource.camera,
+              //   preferredCameraDevice: CameraDevice.front,
+              //   imageQuality: 100
+              // );
+              // if (pickedFile == null) {
+              //   print('No selecciono nada');
+              //   return;
+              // }
+              // print('Tenemos imagen: ${pickedFile.path}');
+              // authService.takePicture(pickedFile.path);
+              print('Funcion no sportada'); // Se deshabilito la funcion de sacar foto en web
             },
           ),
         ),

@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,6 +10,7 @@ class DrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authService = Provider.of<AuthService>(context);
+    final userAgent = window.navigator.userAgent.toString().toLowerCase();
 
     return Drawer(
       child: ListView(
@@ -26,6 +29,9 @@ class DrawerWidget extends StatelessWidget {
             leading: Icon(Icons.list_rounded, color: Colors.indigo),
             title: Text('Mis datos'),
             onTap: () {
+              if (userAgent.contains('android')) {
+                document.exitFullscreen();
+              }
               Navigator.pushReplacementNamed(context, 'profile');
             },
           ),
@@ -33,6 +39,9 @@ class DrawerWidget extends StatelessWidget {
             leading: Icon(Icons.credit_card_rounded, color: Colors.indigo),
             title: Text('Credencial'),
             onTap: () {
+              if (userAgent.contains('android')) {
+                document.documentElement!.requestFullscreen();
+              }
               Navigator.pushReplacementNamed(context, 'credential');
             },
           ),

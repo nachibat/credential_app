@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +15,11 @@ class CredentialScreen extends StatelessWidget {
     final user = Provider.of<AuthService>(context, listen: false).user;
 
     if (user.usuario != null) {
-      landscape();
+      // landscape();
+      final userAgent = window.navigator.userAgent.toString().toLowerCase();
+      if (userAgent.contains('android')) {
+        document.documentElement!.requestFullscreen();
+      }
       return SuccessCredential(apellido: user.apelNom!, nombre: user.apelNom!, legajo: user.legajo!,);
     } else {
       portrait();
